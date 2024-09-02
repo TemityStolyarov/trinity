@@ -76,6 +76,114 @@ class StorybookApp extends StatelessWidget {
                     suitType: CardSuitType.beast,
                     levelType: CardLevelType.third,
                   ),
+                  TrinityCard(
+                    title: 'Дракон',
+                    subtitle: '3B',
+                    description:
+                        'Сбрось две карты Град со Двора врага на выбор; возьми одну карту Люд и одну карту Скот из Помойной ямы',
+                    value: 3,
+                    suitType: CardSuitType.beast,
+                    levelType: CardLevelType.third,
+                  ),
+                  TrinityCard(
+                    title: 'Грифон',
+                    subtitle: '2B',
+                    description:
+                        'Один раз защищает любую карту от сброса; когда на свой Двор выкладывается Люд, возьми карту из Истока',
+                    value: 2,
+                    suitType: CardSuitType.beast,
+                    levelType: CardLevelType.third,
+                  ),
+                  TrinityCard(
+                    title: 'Дракон',
+                    subtitle: '3B',
+                    description:
+                        'Сбрось две карты Град со Двора врага на выбор; возьми одну карту Люд и одну карту Скот из Помойной ямы',
+                    value: 3,
+                    suitType: CardSuitType.beast,
+                    levelType: CardLevelType.third,
+                  ),
+                  TrinityCard(
+                    title: 'Грифон',
+                    subtitle: '2B',
+                    description:
+                        'Один раз защищает любую карту от сброса; когда на свой Двор выкладывается Люд, возьми карту из Истока',
+                    value: 2,
+                    suitType: CardSuitType.beast,
+                    levelType: CardLevelType.third,
+                  ),
+                  TrinityCard(
+                    title: 'Дракон',
+                    subtitle: '3B',
+                    description:
+                        'Сбрось две карты Град со Двора врага на выбор; возьми одну карту Люд и одну карту Скот из Помойной ямы',
+                    value: 3,
+                    suitType: CardSuitType.beast,
+                    levelType: CardLevelType.third,
+                  ),
+                  TrinityCard(
+                    title: 'Грифон',
+                    subtitle: '2B',
+                    description:
+                        'Один раз защищает любую карту от сброса; когда на свой Двор выкладывается Люд, возьми карту из Истока',
+                    value: 2,
+                    suitType: CardSuitType.beast,
+                    levelType: CardLevelType.third,
+                  ),
+                  TrinityCard(
+                    title: 'Дракон',
+                    subtitle: '3B',
+                    description:
+                        'Сбрось две карты Град со Двора врага на выбор; возьми одну карту Люд и одну карту Скот из Помойной ямы',
+                    value: 3,
+                    suitType: CardSuitType.beast,
+                    levelType: CardLevelType.third,
+                  ),
+                  TrinityCard(
+                    title: 'Грифон',
+                    subtitle: '2B',
+                    description:
+                        'Один раз защищает любую карту от сброса; когда на свой Двор выкладывается Люд, возьми карту из Истока',
+                    value: 2,
+                    suitType: CardSuitType.beast,
+                    levelType: CardLevelType.third,
+                  ),
+                  TrinityCard(
+                    title: 'Дракон',
+                    subtitle: '3B',
+                    description:
+                        'Сбрось две карты Град со Двора врага на выбор; возьми одну карту Люд и одну карту Скот из Помойной ямы',
+                    value: 3,
+                    suitType: CardSuitType.beast,
+                    levelType: CardLevelType.third,
+                  ),
+                  TrinityCard(
+                    title: 'Грифон',
+                    subtitle: '2B',
+                    description:
+                        'Один раз защищает любую карту от сброса; когда на свой Двор выкладывается Люд, возьми карту из Истока',
+                    value: 2,
+                    suitType: CardSuitType.beast,
+                    levelType: CardLevelType.third,
+                  ),
+                  TrinityCard(
+                    title: 'Дракон',
+                    subtitle: '3B',
+                    description:
+                        'Сбрось две карты Град со Двора врага на выбор; возьми одну карту Люд и одну карту Скот из Помойной ямы',
+                    value: 3,
+                    suitType: CardSuitType.beast,
+                    levelType: CardLevelType.third,
+                  ),
+                  TrinityCard(
+                    title: 'Грифон',
+                    subtitle: '2B',
+                    description:
+                        'Один раз защищает любую карту от сброса; когда на свой Двор выкладывается Люд, возьми карту из Истока',
+                    value: 2,
+                    suitType: CardSuitType.beast,
+                    levelType: CardLevelType.third,
+                  ),
                 ],
               ),
             ],
