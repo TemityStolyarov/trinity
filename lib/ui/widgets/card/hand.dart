@@ -23,35 +23,32 @@ class _HandState extends State<Hand> {
       children: [
         if (showCard != null && isSelected == true) widget.cardList[showCard!],
         Row(
+          mainAxisSize: MainAxisSize.min,
           children: [
-            for (int item = 0; item < widget.cardList.length; item++) ...[
-              Positioned(
-                left: item * -40.h,
-                child: Container(
-                  child: MouseRegion(
-                    onEnter: (event) {
-                      setState(() {
-                        showCard = item;
-                        isSelected = true;
-                      });
-                    },
-                    onExit: (event) {
-                      setState(() {
-                        isSelected = false;
-                        showCard = null;
-                      });
-                    },
-                    child: Transform.rotate(
-                      angle:
-                          ((item.px - widget.cardList.length.px * 1.px / 3.px) /
-                                  widget.cardList.length.px) /
-                              10.px,
-                      child: widget.cardList[item],
-                    ),
+            for (int item = 0; item < widget.cardList.length; item++)
+              Transform.translate(
+                offset: Offset(item * -20.h, 0),
+                child: MouseRegion(
+                  onEnter: (event) {
+                    setState(() {
+                      showCard = item;
+                      isSelected = true;
+                    });
+                  },
+                  onExit: (event) {
+                    setState(() {
+                      isSelected = false;
+                      showCard = null;
+                    });
+                  },
+                  child: Transform.rotate(
+                    angle: ((item - widget.cardList.length / 3) /
+                            widget.cardList.length) /
+                        10,
+                    child: widget.cardList[item],
                   ),
                 ),
               ),
-            ],
           ],
         ),
       ],
