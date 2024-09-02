@@ -11,8 +11,8 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ScreenScaleProperties(
-      width: 2000,
-      height: 2000,
+      width: 1920,
+      height: 1080,
       allowFontScaling: true,
       allowSubpixel: true,
     );

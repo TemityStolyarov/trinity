@@ -29,17 +29,17 @@ class TrinityCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 180.px,
-      height: 320.px,
+      width: 180.h,
+      height: 320.h,
       decoration: BoxDecoration(
         border: Border.all(
           color: Colors.black.withOpacity(0.5),
         ),
         color: Colors.white,
-        borderRadius: BorderRadius.circular(16.px),
+        borderRadius: BorderRadius.circular(16.h),
       ),
       child: Padding(
-        padding: EdgeInsets.all(8.px),
+        padding: EdgeInsets.all(8.h),
         child: Stack(
           children: [
             _CardSubtitle(value, suitType),
@@ -53,7 +53,7 @@ class TrinityCard extends StatelessWidget {
                   value: value,
                   suit: suitType,
                 ),
-                SizedBox(height: 4.px),
+                SizedBox(height: 4.h),
                 _CardDescription(description),
                 const Spacer(),
                 _CardLevel(levelType),
@@ -77,7 +77,7 @@ class _CardTitle extends StatelessWidget {
       title,
       style: TextStyle(
         fontWeight: FontWeight.w500,
-        fontSize: 16.px,
+        fontSize: 16.h,
       ),
     );
   }
@@ -92,15 +92,15 @@ class _CardSubtitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: 20.px),
+      padding: EdgeInsets.only(top: 20.h),
       child: Column(
         children: [
           for (int index = 0; index < value; index++)
             SvgPicture.asset(
               'assets/icons/${type.name}.svg',
               fit: BoxFit.cover,
-              width: 16.px,
-              height: 16.px,
+              width: 16.h,
+              height: 16.h,
             ),
         ],
       ),
@@ -126,14 +126,14 @@ class _CardValue extends StatelessWidget {
           '$value',
           style: TextStyle(
             fontWeight: FontWeight.w500,
-            fontSize: 22.px,
+            fontSize: 22.h,
           ),
         ),
         SvgPicture.asset(
           'assets/icons/${suit.name}.svg',
           fit: BoxFit.cover,
-          width: 22.px,
-          height: 22.px,
+          width: 22.h,
+          height: 22.h,
         ),
       ],
     );
@@ -151,7 +151,7 @@ class _CardDescription extends StatelessWidget {
       description,
       textAlign: TextAlign.center,
       style: TextStyle(
-        fontSize: 12.px,
+        fontSize: 12.h,
       ),
     );
   }
@@ -178,8 +178,8 @@ class _LevelStarsRow extends StatelessWidget {
     final levelStar = SvgPicture.asset(
       'assets/icons/level.svg',
       fit: BoxFit.cover,
-      width: 12.px,
-      height: 12.px,
+      width: 12.h,
+      height: 12.h,
     );
 
     switch (type) {
