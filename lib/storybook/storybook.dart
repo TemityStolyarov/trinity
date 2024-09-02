@@ -21,6 +21,11 @@ class _StorybookState extends State<Storybook> {
         LeftPanel(
           widgets: widget.widgets,
           selectedIndex: selectedIndex,
+          callback: (value) {
+            setState(() {
+              selectedIndex = value;
+            });
+          },
         ),
         const Spacer(),
         RightPanel(

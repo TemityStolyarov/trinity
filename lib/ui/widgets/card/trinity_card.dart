@@ -28,7 +28,8 @@ class TrinityCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 200,
+      width: 180,
+      height: 320,
       decoration: BoxDecoration(
         border: Border.all(
           color: Colors.black.withOpacity(0.5),
@@ -41,14 +42,16 @@ class TrinityCard extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             _CardTitle(title),
-            _CardSubtitle(subtitle),
+            // _CardSubtitle(subtitle),
             // CardImage(cardImageAsset),
-
+            const Spacer(flex: 10),
             _CardValue(
               value: value,
               suit: suitType,
             ),
+            const SizedBox(height: 4),
             _CardDescription(description),
+            const Spacer(),
             _CardLevel(levelType),
           ],
         ),
@@ -64,24 +67,30 @@ class _CardTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(title);
-  }
-}
-
-class _CardSubtitle extends StatelessWidget {
-  const _CardSubtitle(this.subtitle);
-
-  final String subtitle;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Text(subtitle),
-      ],
+    return Text(
+      title,
+      style: const TextStyle(
+        fontWeight: FontWeight.w500,
+        fontSize: 16,
+      ),
     );
   }
 }
+
+// class _CardSubtitle extends StatelessWidget {
+//   const _CardSubtitle(this.subtitle);
+
+//   final String subtitle;
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Row(
+//       children: [
+//         Text(subtitle),
+//       ],
+//     );
+//   }
+// }
 
 class _CardValue extends StatelessWidget {
   const _CardValue({
@@ -95,9 +104,21 @@ class _CardValue extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text('$value'),
-        SvgPicture.asset('assets/icons/${suit.name}.svg'),
+        Text(
+          '$value',
+          style: const TextStyle(
+            fontWeight: FontWeight.w500,
+            fontSize: 22,
+          ),
+        ),
+        SvgPicture.asset(
+          'assets/icons/${suit.name}.svg',
+          fit: BoxFit.cover,
+          width: 22,
+          height: 22,
+        ),
       ],
     );
   }
@@ -127,17 +148,40 @@ class _CardLevel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(_getTextFromLevelType(type));
+    return _LevelStarsRow(type: type);
   }
 }
 
-String _getTextFromLevelType(CardLevelType type) {
-  switch (type) {
-    case CardLevelType.first:
-      return '*';
-    case CardLevelType.second:
-      return '**';
-    case CardLevelType.third:
-      return '***';
+class _LevelStarsRow extends StatelessWidget {
+  const _LevelStarsRow({required this.type});
+
+  final CardLevelType type;
+
+  @override
+  Widget build(BuildContext context) {
+    final levelStar = SvgPicture.asset(
+      'assets/icons/level.svg',
+      fit: BoxFit.cover,
+      width: 12,
+      height: 12,
+    );
+
+    switch (type) {
+      case CardLevelType.first:
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [levelStar],
+        );
+      case CardLevelType.second:
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [levelStar, levelStar],
+        );
+      case CardLevelType.third:
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [levelStar, levelStar, levelStar],
+        );
+    }
   }
 }
