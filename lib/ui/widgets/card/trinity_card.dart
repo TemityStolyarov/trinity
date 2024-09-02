@@ -1,62 +1,69 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:trinity/core/deck.dart';
 
-enum CardLevelType { first, second, third }
 
-enum CardSuitType { beast, folk, yard, curse, trophy }
 
 class TrinityCard extends StatelessWidget {
   const TrinityCard({
     super.key,
-    required this.title,
-    required this.subtitle,
-    required this.description,
-    required this.value,
-    required this.suitType,
-    required this.levelType,
+    required this.card,
+    required this.width,
+    required this.heigth,
+    required this.titleFontSize,
+    required this.valueFontSize,
+    required this.descriptionFontSize,
+    required this.iconSize,
   });
 
-  final String title;
-  final String subtitle;
-  final String description;
-  final int value;
+  final Deck card;
 
-  final CardSuitType suitType;
-  final CardLevelType levelType;
+  final double width;
+  final double heigth;
+  final double titleFontSize;
+  final double valueFontSize;
+  final double descriptionFontSize;
+  final double iconSize;
   // final String cardImageAsset; TODO
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 180.sp,
-      height: 320.sp,
+      width: width,
+      height: heigth,
       decoration: BoxDecoration(
         border: Border.all(
           color: Colors.black.withOpacity(0.5),
         ),
         color: Colors.white,
-        borderRadius: BorderRadius.circular(16.sp),
+        borderRadius: BorderRadius.circular(16),
       ),
       child: Padding(
-        padding: EdgeInsets.all(8.sp),
+        padding: const EdgeInsets.all(8),
         child: Stack(
           children: [
-            _CardSubtitle(value, suitType),
+            _CardSubtitle(value: card.value, type: card.suitType, iconSize: iconSize),
             Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                _CardTitle(title),
+                _CardTitle(title: card.title, titleFontSize: titleFontSize),
                 // CardImage(cardImageAsset),
                 const Spacer(flex: 10),
                 _CardValue(
-                  value: value,
-                  suit: suitType,
+                  value: card.value,
+                  suit: card.suitType,
+                  valueFontSize: valueFontSize,
                 ),
-                SizedBox(height: 4.sp),
-                _CardDescription(description),
+                const SizedBox(height: 4),
+                _CardDescription(
+                  description: card.description,
+                  descriptionFontSize: descriptionFontSize,
+                ),
                 const Spacer(),
-                _CardLevel(levelType),
+                _CardLevel(
+                  type: card.levelType,
+                  descriptionFontSize: descriptionFontSize,
+                ),
               ],
             ),
           ],
@@ -67,9 +74,10 @@ class TrinityCard extends StatelessWidget {
 }
 
 class _CardTitle extends StatelessWidget {
-  const _CardTitle(this.title);
+  const _CardTitle({required this.title, required this.titleFontSize});
 
   final String title;
+  final double titleFontSize;
 
   @override
   Widget build(BuildContext context) {
@@ -77,30 +85,32 @@ class _CardTitle extends StatelessWidget {
       title,
       style: TextStyle(
         fontWeight: FontWeight.w500,
-        fontSize: 16.sp,
+        fontSize: titleFontSize,
       ),
     );
   }
 }
 
 class _CardSubtitle extends StatelessWidget {
-  const _CardSubtitle(this.value, this.type);
+  const _CardSubtitle(
+      {required this.value, required this.type, required this.iconSize});
 
   final int value;
   final CardSuitType type;
+  final double iconSize;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: 20.sp),
+      padding: const EdgeInsets.only(top: 20),
       child: Column(
         children: [
           for (int index = 0; index < value; index++)
             SvgPicture.asset(
               'assets/icons/${type.name}.svg',
               fit: BoxFit.cover,
-              width: 16.sp,
-              height: 16.sp,
+              width: iconSize,
+              height: iconSize,
             ),
         ],
       ),
@@ -112,10 +122,12 @@ class _CardValue extends StatelessWidget {
   const _CardValue({
     required this.value,
     required this.suit,
+    required this.valueFontSize,
   });
 
   final int value;
   final CardSuitType suit;
+  final double valueFontSize;
 
   @override
   Widget build(BuildContext context) {
@@ -126,14 +138,14 @@ class _CardValue extends StatelessWidget {
           '$value',
           style: TextStyle(
             fontWeight: FontWeight.w500,
-            fontSize: 22.sp,
+            fontSize: valueFontSize,
           ),
         ),
         SvgPicture.asset(
           'assets/icons/${suit.name}.svg',
           fit: BoxFit.cover,
-          width: 22.sp,
-          height: 22.sp,
+          width: valueFontSize,
+          height: valueFontSize,
         ),
       ],
     );
@@ -141,9 +153,13 @@ class _CardValue extends StatelessWidget {
 }
 
 class _CardDescription extends StatelessWidget {
-  const _CardDescription(this.description);
+  const _CardDescription({
+    required this.description,
+    required this.descriptionFontSize,
+  });
 
   final String description;
+  final double descriptionFontSize;
 
   @override
   Widget build(BuildContext context) {
@@ -151,35 +167,46 @@ class _CardDescription extends StatelessWidget {
       description,
       textAlign: TextAlign.center,
       style: TextStyle(
-        fontSize: 12.sp,
+        fontSize: descriptionFontSize,
       ),
     );
   }
 }
 
 class _CardLevel extends StatelessWidget {
-  const _CardLevel(this.type);
+  const _CardLevel({
+    required this.type,
+    required this.descriptionFontSize,
+  });
 
   final CardLevelType type;
+  final double descriptionFontSize;
 
   @override
   Widget build(BuildContext context) {
-    return _LevelStarsRow(type: type);
+    return _LevelStarsRow(
+      type: type,
+      descriptionFontSize: descriptionFontSize,
+    );
   }
 }
 
 class _LevelStarsRow extends StatelessWidget {
-  const _LevelStarsRow({required this.type});
+  const _LevelStarsRow({
+    required this.type,
+    required this.descriptionFontSize,
+  });
 
   final CardLevelType type;
+  final double descriptionFontSize;
 
   @override
   Widget build(BuildContext context) {
     final levelStar = SvgPicture.asset(
       'assets/icons/level.svg',
       fit: BoxFit.cover,
-      width: 12.sp,
-      height: 12.sp,
+      width: descriptionFontSize,
+      height: descriptionFontSize,
     );
 
     switch (type) {

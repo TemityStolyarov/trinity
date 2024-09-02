@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Hand extends StatefulWidget {
   const Hand({super.key, required this.cardList});
@@ -22,38 +20,44 @@ class _HandState extends State<Hand> {
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         if (showCard != null && isSelected == true) ...[
+          const Spacer(flex: 2),
           Transform.scale(
-            scale: 1.5,
+            scale: 2,
             child: widget.cardList[showCard!],
           ),
-          SizedBox(height: 80.sp),
+          const Spacer(),
         ],
-        Transform.scale(
-          scale: 0.75,
-          alignment: Alignment.bottomCenter,
+        Transform.translate(
+          offset: Offset(18.0 * widget.cardList.length, 0),
           child: Row(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               for (int item = 0; item < widget.cardList.length; item++)
-                MouseRegion(
-                  onEnter: (event) {
-                    setState(() {
-                      showCard = item;
-                      isSelected = true;
-                    });
-                  },
-                  onExit: (event) {
-                    setState(() {
-                      isSelected = false;
-                      showCard = null;
-                    });
-                  },
-                  child: Transform.rotate(
-                    angle: ((item - widget.cardList.length / 3) /
-                            widget.cardList.length) /
-                        10.sp,
-                    child: widget.cardList[item],
+                Transform.translate(
+                  offset: Offset(item * -40, 60),
+                  child: MouseRegion(
+                    onEnter: (event) {
+                      setState(() {
+                        showCard = item;
+                        isSelected = true;
+                      });
+                    },
+                    onExit: (event) {
+                      setState(() {
+                        isSelected = false;
+                        showCard = null;
+                      });
+                    },
+                    child: Transform.rotate(
+                      angle: ((item - widget.cardList.length / 2) /
+                              widget.cardList.length) *
+                          0.5,
+                      child: Transform.scale(
+                        scale: showCard == item
+                            ? 1.2
+                            : 1.0, // Увеличение карты при наведении
+                        child: widget.cardList[item],
+                      ),
+                    ),
                   ),
                 ),
             ],
