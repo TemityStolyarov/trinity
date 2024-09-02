@@ -1,7 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_screen_scaling/flutter_screen_scaling.dart';
-import 'package:trinity/ui/widgets/card/trinity_card.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Hand extends StatefulWidget {
   const Hand({super.key, required this.cardList});
@@ -21,14 +21,22 @@ class _HandState extends State<Hand> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        if (showCard != null && isSelected == true) widget.cardList[showCard!],
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            for (int item = 0; item < widget.cardList.length; item++)
-              Transform.translate(
-                offset: Offset(item * -20.h, 0),
-                child: MouseRegion(
+        if (showCard != null && isSelected == true) ...[
+          Transform.scale(
+            scale: 1.5,
+            child: widget.cardList[showCard!],
+          ),
+          SizedBox(height: 80.sp),
+        ],
+        Transform.scale(
+          scale: 0.75,
+          alignment: Alignment.bottomCenter,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              for (int item = 0; item < widget.cardList.length; item++)
+                MouseRegion(
                   onEnter: (event) {
                     setState(() {
                       showCard = item;
@@ -44,12 +52,12 @@ class _HandState extends State<Hand> {
                   child: Transform.rotate(
                     angle: ((item - widget.cardList.length / 3) /
                             widget.cardList.length) /
-                        10,
+                        10.sp,
                     child: widget.cardList[item],
                   ),
                 ),
-              ),
-          ],
+            ],
+          ),
         ),
       ],
     );

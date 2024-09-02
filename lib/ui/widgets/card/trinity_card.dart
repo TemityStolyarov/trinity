@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screen_scaling/flutter_screen_scaling.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 enum CardLevelType { first, second, third }
@@ -29,17 +29,17 @@ class TrinityCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 180.h,
-      height: 320.h,
+      width: 180.sp,
+      height: 320.sp,
       decoration: BoxDecoration(
         border: Border.all(
           color: Colors.black.withOpacity(0.5),
         ),
         color: Colors.white,
-        borderRadius: BorderRadius.circular(16.h),
+        borderRadius: BorderRadius.circular(16.sp),
       ),
       child: Padding(
-        padding: EdgeInsets.all(8.h),
+        padding: EdgeInsets.all(8.sp),
         child: Stack(
           children: [
             _CardSubtitle(value, suitType),
@@ -53,7 +53,7 @@ class TrinityCard extends StatelessWidget {
                   value: value,
                   suit: suitType,
                 ),
-                SizedBox(height: 4.h),
+                SizedBox(height: 4.sp),
                 _CardDescription(description),
                 const Spacer(),
                 _CardLevel(levelType),
@@ -77,7 +77,7 @@ class _CardTitle extends StatelessWidget {
       title,
       style: TextStyle(
         fontWeight: FontWeight.w500,
-        fontSize: 16.h,
+        fontSize: 16.sp,
       ),
     );
   }
@@ -92,15 +92,15 @@ class _CardSubtitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: 20.h),
+      padding: EdgeInsets.only(top: 20.sp),
       child: Column(
         children: [
           for (int index = 0; index < value; index++)
             SvgPicture.asset(
               'assets/icons/${type.name}.svg',
               fit: BoxFit.cover,
-              width: 16.h,
-              height: 16.h,
+              width: 16.sp,
+              height: 16.sp,
             ),
         ],
       ),
@@ -126,14 +126,14 @@ class _CardValue extends StatelessWidget {
           '$value',
           style: TextStyle(
             fontWeight: FontWeight.w500,
-            fontSize: 22.h,
+            fontSize: 22.sp,
           ),
         ),
         SvgPicture.asset(
           'assets/icons/${suit.name}.svg',
           fit: BoxFit.cover,
-          width: 22.h,
-          height: 22.h,
+          width: 22.sp,
+          height: 22.sp,
         ),
       ],
     );
@@ -151,7 +151,7 @@ class _CardDescription extends StatelessWidget {
       description,
       textAlign: TextAlign.center,
       style: TextStyle(
-        fontSize: 12.h,
+        fontSize: 12.sp,
       ),
     );
   }
@@ -178,8 +178,8 @@ class _LevelStarsRow extends StatelessWidget {
     final levelStar = SvgPicture.asset(
       'assets/icons/level.svg',
       fit: BoxFit.cover,
-      width: 12.h,
-      height: 12.h,
+      width: 12.sp,
+      height: 12.sp,
     );
 
     switch (type) {
