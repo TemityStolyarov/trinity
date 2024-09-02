@@ -52,9 +52,7 @@ class _HandState extends State<Hand> {
                               widget.cardList.length) *
                           0.5,
                       child: Transform.scale(
-                        scale: showCard == item
-                            ? 1.2
-                            : 1.0, // Увеличение карты при наведении
+                        scale: showCard == item ? 1.2 : 1.0,
                         child: widget.cardList[item],
                       ),
                     ),
