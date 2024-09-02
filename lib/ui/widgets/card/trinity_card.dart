@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screen_scaling/flutter_screen_scaling.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 enum CardLevelType { first, second, third }
@@ -28,31 +29,36 @@ class TrinityCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 180,
-      height: 320,
+      width: 180.px,
+      height: 320.px,
       decoration: BoxDecoration(
         border: Border.all(
           color: Colors.black.withOpacity(0.5),
         ),
-        borderRadius: BorderRadius.circular(16),
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16.px),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(8),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
+        padding: EdgeInsets.all(8.px),
+        child: Stack(
           children: [
-            _CardTitle(title),
-            // _CardSubtitle(subtitle),
-            // CardImage(cardImageAsset),
-            const Spacer(flex: 10),
-            _CardValue(
-              value: value,
-              suit: suitType,
+            _CardSubtitle(value, suitType),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                _CardTitle(title),
+                // CardImage(cardImageAsset),
+                const Spacer(flex: 10),
+                _CardValue(
+                  value: value,
+                  suit: suitType,
+                ),
+                SizedBox(height: 4.px),
+                _CardDescription(description),
+                const Spacer(),
+                _CardLevel(levelType),
+              ],
             ),
-            const SizedBox(height: 4),
-            _CardDescription(description),
-            const Spacer(),
-            _CardLevel(levelType),
           ],
         ),
       ),
@@ -69,28 +75,38 @@ class _CardTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       title,
-      style: const TextStyle(
+      style: TextStyle(
         fontWeight: FontWeight.w500,
-        fontSize: 16,
+        fontSize: 16.px,
       ),
     );
   }
 }
 
-// class _CardSubtitle extends StatelessWidget {
-//   const _CardSubtitle(this.subtitle);
+class _CardSubtitle extends StatelessWidget {
+  const _CardSubtitle(this.value, this.type);
 
-//   final String subtitle;
+  final int value;
+  final CardSuitType type;
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Row(
-//       children: [
-//         Text(subtitle),
-//       ],
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(top: 20.px),
+      child: Column(
+        children: [
+          for (int index = 0; index < value; index++)
+            SvgPicture.asset(
+              'assets/icons/${type.name}.svg',
+              fit: BoxFit.cover,
+              width: 16.px,
+              height: 16.px,
+            ),
+        ],
+      ),
+    );
+  }
+}
 
 class _CardValue extends StatelessWidget {
   const _CardValue({
@@ -108,16 +124,16 @@ class _CardValue extends StatelessWidget {
       children: [
         Text(
           '$value',
-          style: const TextStyle(
+          style: TextStyle(
             fontWeight: FontWeight.w500,
-            fontSize: 22,
+            fontSize: 22.px,
           ),
         ),
         SvgPicture.asset(
           'assets/icons/${suit.name}.svg',
           fit: BoxFit.cover,
-          width: 22,
-          height: 22,
+          width: 22.px,
+          height: 22.px,
         ),
       ],
     );
@@ -134,8 +150,8 @@ class _CardDescription extends StatelessWidget {
     return Text(
       description,
       textAlign: TextAlign.center,
-      style: const TextStyle(
-        fontSize: 12,
+      style: TextStyle(
+        fontSize: 12.px,
       ),
     );
   }
@@ -162,8 +178,8 @@ class _LevelStarsRow extends StatelessWidget {
     final levelStar = SvgPicture.asset(
       'assets/icons/level.svg',
       fit: BoxFit.cover,
-      width: 12,
-      height: 12,
+      width: 12.px,
+      height: 12.px,
     );
 
     switch (type) {

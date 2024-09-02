@@ -70,6 +70,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.2"
+  flutter_screen_scaling:
+    dependency: "direct main"
+    description:
+      name: flutter_screen_scaling
+      sha256: "8e774128072d099f28038214fa6727fb69dade53ac917f08deddcf6bc0a01f8b"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.3.2+3"
   flutter_svg:
     dependency: "direct main"
     description:
