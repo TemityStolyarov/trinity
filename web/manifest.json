@@ -1,6 +1,6 @@
 {
-    "name": "trinity2",
-    "short_name": "trinity2",
+    "name": "trinity",
+    "short_name": "trinity",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
