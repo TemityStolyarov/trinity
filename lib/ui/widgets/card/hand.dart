@@ -47,6 +47,7 @@ class _HandState extends State<Hand> {
                         showCard = null;
                       });
                     },
+                    cursor: MaterialStateMouseCursor.clickable,
                     child: Transform.rotate(
                       angle: ((item - widget.cardList.length / 2) /
                               widget.cardList.length) *
