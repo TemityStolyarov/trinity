@@ -35,7 +35,7 @@ class StorybookApp extends StatelessWidget {
               valueFontSize: 22,
             ),
             TrinityCard(
-              card: Deck.grifon,
+              card: Deck.griffon,
               width: 180,
               heigth: 320,
               titleFontSize: 16,
@@ -55,7 +55,7 @@ class StorybookApp extends StatelessWidget {
                   valueFontSize: miniValueFontSize,
                 ),
                 TrinityCard(
-                  card: Deck.volk,
+                  card: Deck.wolf,
                   width: miniWidth,
                   heigth: miniHeigth,
                   titleFontSize: miniTitleFontSize,
@@ -64,7 +64,7 @@ class StorybookApp extends StatelessWidget {
                   valueFontSize: miniValueFontSize,
                 ),
                 TrinityCard(
-                  card: Deck.edinorog,
+                  card: Deck.unicorn,
                   width: miniWidth,
                   heigth: miniHeigth,
                   titleFontSize: miniTitleFontSize,
@@ -73,7 +73,7 @@ class StorybookApp extends StatelessWidget {
                   valueFontSize: miniValueFontSize,
                 ),
                 TrinityCard(
-                  card: Deck.grifon,
+                  card: Deck.griffon,
                   width: miniWidth,
                   heigth: miniHeigth,
                   titleFontSize: miniTitleFontSize,
